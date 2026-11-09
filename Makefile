@@ -36,7 +36,7 @@ mic-%.json: mic.json
 	sed -E "s/([^/][jJ])$$(basename "$$PWD" | tr -d j)/\1$(patsubst mic-j%.json,%,$@)/g" $< >$@
 
 clean:
-	rm -f firs/*/graph-*.json
+	rm -f firs/*/graph-*.json firs/*/mic-*.json
 
 core:
 	install -dDm0755 $(DESTDIR)/$(DATA_DIR)/wireplumber/scripts/device/
@@ -59,6 +59,6 @@ install: aliases core j274 j293 j313 j314 j316 j413 j415 j375
 uninstall:
 	rm -rf $(DESTDIR)/$(DATA_DIR)/hikari-audio/
 	rm -rf $(DESTDIR)/$(DATA_DIR)/wireplumber/wireplumber.conf.d/99-hikari.conf
-	rm -rf $(DESTDIR)/$(DATA_DIR)/wireplumber/scripts/device/hikari-limit-volume.lua
+	rm -rf $(DESTDIR)/$(DATA_DIR)/wireplumber/scripts/device/hikari-lock-volume.lua
 	rm -rf $(DESTDIR)/$(DATA_DIR)/pipewire/pipewire.conf.d/99-hikari.conf
 	rm -rf $(DESTDIR)/$(DATA_DIR)/pipewire/pipewire-pulse.conf.d/99-hikari.conf
